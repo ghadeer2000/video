@@ -16,11 +16,19 @@ class MainActivity : AppCompatActivity() {
     var playwhenReady = true
     var playbackPostion = 0
     var currentkindew = 0
-    var vedioURl = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+    var vedioURl: String? = ""
+
+    //    var vedioURl = "https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
+//    var vedioURl = "https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_480_1_5MG.mp4"
+//    var vedioURl =  "https://cdn.videvo.net/videvo_files/video/free/2018-11/small_watermarked/181015_06_FourLevel_05_preview.webm"
+//    var vedioURl =  "https://cdn.videvo.net/videvo_files/video/free/2019-03/small_watermarked/181015_05a_Griffith%20Observatory%20Drone_10_preview.webm"
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        vedioURl = intent.getStringExtra("vedio1")
+        var value = intent.getStringExtra("vedio1")
 
     }
 
@@ -28,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         player = ExoPlayerFactory.newSimpleInstance(this)
         video_view.setPlayer(player)
         var uri = Uri.parse(vedioURl)
-        val dataSourcefactory: DataSource.Factory = DefaultDataSourceFactory(this, "exoplayer-codelab")
+        val dataSourcefactory: DataSource.Factory =
+            DefaultDataSourceFactory(this, "exoplayer-codelab")
         var MediaSource = ProgressiveMediaSource.Factory(dataSourcefactory).createMediaSource(uri)
 //        player.playWhenReady(playwhenReady)
         //        new ProgressiveMediaSource.Factory(dataSourcefactory).createMediaSource(uri)
